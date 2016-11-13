@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Multiplying in Scientific Notation</title>
+	<script type="text/javascript">
+		
+
+function myFunction2(){
+	var p2 = document.getElementById("answer2");
+
+	var a = document.getElementById("num1");
+	var z = document.getElementById("exp1");
+
+	var b = document.getElementById("num2");
+	var y = document.getElementById("exp2");
+
+	var az = a.value + "e" + z.value; // eg, 3e2
+	var by = b.value + "e" + y.value;
+
+		// console.log(az + "," + by); // eg, 3e2,2e3
+		// console.log(typeof(az)); // should be string still
+
+	var aNum = Number(az); // str to num
+	var bNum = Number(by);
+
+		// console.log(typeof(aNum)); // should be number
+
+	var axb = aNum * bNum;
+
+		// console.log(axb); // eg, 600000
+
+	var exp = axb.toExponential(2);
+
+		// console.log(exp); // eg, 6.00e+5
+
+	var str = exp.split("e");
+	var base = str[0];
+	var exponent = str[1];
+
+		// console.log(str[1]);
+
+	var answer = base + " * 10 " + "<sup>" + exponent  + "</sup>";
+
+		// console.log(answer);
+
+	var answerStr = "(" + a.value + " * 10 " + "<sup>" + z.value + "</sup>) * ("  + b.value + " * 10 " + "<sup>" + y.value + "</sup>) = <br><br><b>" + answer + "</b>";
+	p2.innerHTML = answerStr;
+	// p2.innerHTML = answer;
+
+}
+
+
+	</script>
+
+	<style type="text/css">
+		input{ 
+			width:30px
+		}
+	</style>
+</head>
+<body>
+
+<div style="padding:50px">
+
+
+<h2>Multiplying in Scientific Notation</h2>
+<p id="answer"><i>Input format: ([number] * 10 [exponent])</i></p>
+
+		<form id="theForm2">
+
+
+				( <input id="num1" type="text"> * 10 <input id="exp1" type="text"> )
+				( <input id="num2" type="text"> * 10 <input id="exp2" type="text"> )
+
+			<input type="button" onClick="myFunction2()" value="Go">
+
+		</form>
+
+<p id="answer2"></p>
+
+</div>
+
+</body>
+</html>
